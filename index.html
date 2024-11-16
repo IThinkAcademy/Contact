@@ -232,7 +232,7 @@
       <a href="https://ithinkacademy.github.io/Games">Games</a>
       <a href="index.html#projects-">Projects</a>
       <a href="index.html#pricing-">Pricing</a>
-      <a href="https://ithinkacademy.github.io/#contact-">Contact Us</a>
+      <a href="#Contact">Contact Us</a>
     </nav>
     <section class="contact-section">
       <h2>Contact Us</h2>
@@ -362,6 +362,28 @@
         requestAnimationFrame(draw);
       }
       draw();
+    </script>
+    <script>
+        const contactNavButton = document.querySelector('nav a[href="#Contact"]');
+        const contactSection = document.querySelector('.contact-section');
+      
+        contactNavButton.addEventListener('click', (event) => {
+          event.preventDefault(); // Prevent default anchor behavior
+      
+          // Get the position of the contact section
+          const contactPosition = contactSection.getBoundingClientRect().top + window.scrollY;
+      
+          // Calculate the center position
+          const sectionHeight = contactSection.offsetHeight;
+          const viewportHeight = window.innerHeight;
+          const centerPosition = contactPosition - (viewportHeight / 2) + (sectionHeight / 2);
+      
+          // Smooth scroll to the center
+          window.scrollTo({
+            top: centerPosition,
+            behavior: 'smooth'
+          });
+        });
     </script>
   </body>
 </html>
