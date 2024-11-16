@@ -233,18 +233,77 @@
           <a href="tel:+16469690900">646-969-0900</a>
         </p>
       </div>
-      <div class="contact-form">
-        <form action="https://formsubmit.co/f55bc5d08ebdc1ce863db4990278a1f3" method="POST">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" name="name" required placeholder="Your full name">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" required placeholder="Your email address">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required placeholder="Your message..."></textarea>
-          <input type="hidden" name="_next" value="https://ithinkacademy.github.io/">
-          <input type="submit" value="Send Message">
-        </form>
-      </div>
+      <div id="overlay">
+  <div class="spinner"></div>
+</div>
+
+<div class="contact-form">
+  <form action="https://formsubmit.co/f55bc5d08ebdc1ce863db4990278a1f3" method="POST" id="contactForm">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" required placeholder="Your full name">
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" required placeholder="Your email address">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" required placeholder="Your message..."></textarea>
+    <input type="hidden" name="_next" value="https://ithinkacademy.github.io/">
+    <input type="submit" value="Send Message">
+  </form>
+</div>
+
+<style>
+  /* Overlay for gray-out effect */
+  #overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Spinner animation */
+  .spinner {
+    border: 8px solid #e0e0e0;
+    border-top: 8px solid #1e88e5;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Disable pointer events on form while overlay is active */
+  .contact-form.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const overlay = document.getElementById('overlay');
+
+  form.addEventListener('submit', (e) => {
+    // Show overlay
+    overlay.style.display = 'flex';
+
+    // Optionally, you can disable the form to prevent further interactions
+    form.classList.add('disabled');
+  });
+</script>
+
     </section>
     <footer>
       <p>Contact Us: <a href="mailto:initiatingthinkers@gmail.com" style="color: #e0f7fa; text-decoration: none;">initiatingthinkers@gmail.com</a>
