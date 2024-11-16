@@ -64,7 +64,7 @@
         margin-top: 6.7px;
         color: #b0b0b0;
       }
-
+      
       nav {
         display: flex;
         justify-content: center;
@@ -82,10 +82,24 @@
         transition: all 0.3s ease;
       }
 
+      nav a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 3.35px;
+        left: 50%;
+        background-color: #e0f7fa;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
       nav a:hover {
         color: #ffffff;
-        background-color: #1e88e5;
-        transform: scale(1.05);
+      }
+
+      nav a:hover::after {
+        width: 100%;
       }
 
       footer {
